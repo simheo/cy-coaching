@@ -1,0 +1,16 @@
+---
+import { starArray, truncateWords } from '../lib/reviews';
+interface Props { author: string; rating: number; text: string; }
+const { author, rating, text } = Astro.props;
+---
+<article class="rev">
+  <div class="stars">{starArray(rating).map(() => '★').join('')}</div>
+  <p>{truncateWords(text, 40)}</p>
+  <div class="who">{author}</div>
+</article>
+<style>
+  .rev{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:26px;}
+  .stars{color:#e0a63c;letter-spacing:2px;margin-bottom:12px;}
+  p{font-size:15px;color:var(--ink-soft);font-style:italic;}
+  .who{margin-top:16px;font-weight:800;}
+</style>

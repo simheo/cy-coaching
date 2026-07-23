@@ -1,0 +1,55 @@
+---
+import ReviewCard from './ReviewCard.astro';
+import { fallbackReviews } from '../data/reviews-fallback';
+const key = import.meta.env.PUBLIC_GOOGLE_MAPS_API_KEY;
+const placeId = import.meta.env.PUBLIC_GOOGLE_PLACE_ID;
+---
+<section class="section reviews">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Ils m’ont fait confiance</div>
+      <h2>Des sourires, des résultats</h2>
+    </div>
+    <div class="rev-grid" id="reviews-grid">
+      {fallbackReviews.map((r) => <ReviewCard author={r.author} rating={r.rating} text={r.text} />)}
+    </div>
+  </div>
+</section>
+
+{key && placeId && (
+  <script is:inline define:vars={{ key, placeId }}>
+    // Live Google reviews via the Maps JS Places library (max 5). Falls back silently to SSR cards on any error.
+    (function () {
+      function truncate(t, m){var w=t.trim().split(/\s+/);return w.length<=m?w.join(' '):w.slice(0,m).join(' ')+'…';}
+      function render(reviews){
+        var grid=document.getElementById('reviews-grid'); if(!grid||!reviews||!reviews.length) return;
+        grid.innerHTML=reviews.slice(0,5).map(function(r){
+          var stars='★'.repeat(Math.min(5,Math.round(r.rating)));
+          return '<article class="rev"><div class="stars">'+stars+'</div><p>'+truncate(r.text||'',40)+'</p><div class="who">'+(r.author_name||'')+'</div></article>';
+        }).join('');
+      }
+      window.__initReviews=function(){
+        try{
+          var svc=new google.maps.places.PlacesService(document.createElement('div'));
+          svc.getDetails({placeId:placeId,fields:['reviews'],language:'fr'},function(place,status){
+            if(status===google.maps.places.PlacesServiceStatus.OK && place && place.reviews) render(place.reviews);
+          });
+        }catch(e){/* keep fallback */}
+      };
+      var s=document.createElement('script');
+      s.src='https://maps.googleapis.com/maps/api/js?key='+key+'&libraries=places&language=fr&callback=__initReviews';
+      s.async=true; document.head.appendChild(s);
+    })();
+  </script>
+)}
+
+<style>
+  .reviews{background:var(--cream);}
+  .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  @media(max-width:900px){.rev-grid{grid-template-columns:1fr;}}
+  /* card styles duplicated for injected markup */
+  .rev-grid :global(.rev){background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:26px;}
+  .rev-grid :global(.stars){color:#e0a63c;letter-spacing:2px;margin-bottom:12px;}
+  .rev-grid :global(.rev p){font-size:15px;color:var(--ink-soft);font-style:italic;}
+  .rev-grid :global(.who){margin-top:16px;font-weight:800;}
+</style>
