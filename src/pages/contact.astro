@@ -1,0 +1,37 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import SectionHead from '../components/SectionHead.astro';
+import contactImg from '../assets/images/contact.jpg';
+---
+<Base title="Contact — CY Coaching, coach sportif à Toulouse"
+      description="Contactez CY Coaching à Toulouse : coaching à domicile ou en salle. Appelez le 06 08 70 32 51, écrivez à yoann.cycoaching@gmail.com ou remplissez le formulaire.">
+  <section class="section">
+    <div class="wrap">
+      <SectionHead eyebrow="Contact" title="On se rencontre ?" lede="Coaching à domicile ou en salle, à Toulouse et alentours. Je m'engage à vous répondre dans les plus brefs délais." />
+      <div class="split">
+        <Image src={contactImg} alt="Séance de coaching personnalisé à Toulouse" width={560} height={620} />
+        <form action="https://formspree.io/f/mbjenzqk" method="POST">
+          <label>Ton nom<input type="text" name="nom" required /></label>
+          <label>Ton e-mail<input type="email" name="email" required /></label>
+          <label>Ton téléphone<input type="tel" name="telephone" required /></label>
+          <label>Message<textarea name="message" rows="5" required></textarea></label>
+          <button type="submit">Envoyer</button>
+        </form>
+      </div>
+      <p class="direct">Ou directement : <a href="tel:0608703251">06 08 70 32 51</a> · <a href="mailto:yoann.cycoaching@gmail.com">yoann.cycoaching@gmail.com</a></p>
+    </div>
+  </section>
+</Base>
+<style>
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
+  .split img{width:100%;border-radius:24px;object-fit:cover;}
+  form{display:flex;flex-direction:column;gap:16px;}
+  label{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:14px;color:var(--ink);}
+  input,textarea{font:inherit;padding:12px 14px;border:1px solid var(--border);border-radius:12px;background:var(--surface);}
+  input:focus,textarea:focus{outline:2px solid var(--terracotta);border-color:transparent;}
+  button{background:var(--terracotta);color:var(--surface);border:none;padding:14px;border-radius:999px;font-weight:700;font-size:15px;cursor:pointer;}
+  button:hover{background:var(--terracotta-dark);}
+  .direct{text-align:center;margin-top:28px;color:var(--ink-soft);}
+  @media(max-width:900px){.split{grid-template-columns:1fr;}}
+</style>

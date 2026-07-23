@@ -7,6 +7,7 @@ import Muscu from '../src/pages/musculation.astro';
 import Ent from '../src/pages/coaching-entreprise.astro';
 import About from '../src/pages/a-propos.astro';
 import Tarif from '../src/pages/tarif.astro';
+import Contact from '../src/pages/contact.astro';
 
 test('homepage renders hero headline, 6 transformations and FAQ', async () => {
   const c = await AstroContainer.create();
@@ -56,4 +57,11 @@ test('tarif page shows all three pricing groups', async () => {
   expect(html).toContain('Coaching individuel');
   expect(html).toContain('Mini-groupe (2 à 5 personnes)');
   expect(html).toContain('Programmes à distance');
+});
+
+test('contact page posts to the Formspree endpoint with all fields', async () => {
+  const c = await AstroContainer.create();
+  const html = await c.renderToString(Contact);
+  expect(html).toContain('https://formspree.io/f/mbjenzqk');
+  for (const n of ['nom','email','telephone','message']) expect(html).toContain(`name="${n}"`);
 });
