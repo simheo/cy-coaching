@@ -1,0 +1,43 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionHead from '../components/SectionHead.astro';
+import AudienceCard from '../components/AudienceCard.astro';
+import CtaBand from '../components/CtaBand.astro';
+---
+<Base title="Coaching sportif en entreprise à Toulouse — CY Coaching"
+      description="Coaching sportif en entreprise à Toulouse : bien-être, cohésion et santé des équipes. Réduisez le stress et les maux liés aux mauvaises postures au travail.">
+  <section class="hero-lite">
+    <div class="wrap">
+      <div class="eyebrow light">Entreprises</div>
+      <h1>Investissez dans vos équipes</h1>
+      <p class="lede">Le sport en entreprise, c'est moins de stress, plus de cohésion, et des collaborateurs en meilleure santé — donc plus épanouis au travail.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <SectionHead eyebrow="Les bénéfices" title="Pourquoi bouger au travail" />
+      <div class="grid3">
+        <AudienceCard icon="ph:users-three" title="Cohésion d'équipe" text="Des séances collectives qui renforcent le lien social et l'esprit d'équipe." />
+        <AudienceCard icon="ph:heartbeat" title="Santé & bien-être" text="Moins de stress, moins de maux liés aux mauvaises postures au poste de travail." />
+        <AudienceCard icon="ph:trend-up" title="Investissement au travail" text="Des collaborateurs en forme sont plus concentrés, plus motivés, plus présents." />
+      </div>
+    </div>
+  </section>
+  <section class="section" style="background:var(--cream);">
+    <div class="wrap narrow">
+      <SectionHead eyebrow="Comment ça marche" title="Une intervention sur mesure" />
+      <p class="prose">Je me déplace dans vos locaux ou dans une salle proche, à Toulouse et alentours. On définit ensemble le format (séances hebdomadaires, ateliers ponctuels, événements) et le contenu selon les envies et le niveau de vos équipes.</p>
+    </div>
+  </section>
+  <CtaBand title="Parlons de vos besoins" text="Contactez-moi pour construire une offre adaptée à votre entreprise." cta="Discutons-en" />
+</Base>
+<style>
+  .hero-lite{background:linear-gradient(160deg,var(--ink),color-mix(in srgb, var(--ink) 80%, var(--terracotta)));color:#fff;padding:90px 0;}
+  .hero-lite h1{color:#fff;font-size:52px;margin-top:12px;}
+  .hero-lite .lede{color:#f3e8dc;font-size:19px;max-width:44ch;margin-top:18px;}
+  .eyebrow.light{color:var(--clay);}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .prose{color:var(--ink-soft);font-size:16px;text-align:center;}
+  .narrow{max-width:720px;}
+  @media(max-width:900px){.grid3{grid-template-columns:1fr;} .hero-lite h1{font-size:36px;}}
+</style>
