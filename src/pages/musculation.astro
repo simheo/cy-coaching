@@ -1,0 +1,39 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Button from '../components/Button.astro';
+import TransformationCard from '../components/TransformationCard.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { transformations } from '../data/transformations';
+import muscuImg from '../assets/images/coaching-individuel.jpg';
+const featured = transformations.slice(0, 3);
+---
+<Base title="Coach Musculation & Remise en forme à Toulouse — CY Coaching"
+      description="Coaching musculation, remise en forme et recomposition corporelle à Toulouse. Programmes personnalisés basés sur la science, pour la prise de masse comme la tonification.">
+  <section class="section">
+    <div class="wrap split">
+      <div class="prose">
+        <SectionHead eyebrow="Musculation & remise en forme" title="Sculptez le corps que vous visez" />
+        <p>Que votre objectif soit la <strong>prise de masse musculaire</strong>, la <strong>tonification</strong> ou une remise en forme générale, je conçois des programmes personnalisés qui respectent votre santé et votre progression.</p>
+        <p>Chaque séance mêle rigueur technique, méthode fondée sur les dernières études, et surtout du plaisir — parce qu'on progresse mieux en s'amusant.</p>
+        <Button href="/contact">Réserver ma séance offerte</Button>
+      </div>
+      <Image src={muscuImg} alt="Séance de coaching musculation à Toulouse" width={560} height={620} />
+    </div>
+  </section>
+  <section class="section" style="background:var(--cream);">
+    <div class="wrap">
+      <SectionHead eyebrow="Transformations" title="Ce que donne un suivi régulier" />
+      <div class="grid3">{featured.map((t) => <TransformationCard t={t} />)}</div>
+    </div>
+  </section>
+  <CtaBand title="Votre transformation commence ici" text="Première séance offerte. On définit vos objectifs et on construit votre plan." />
+</Base>
+<style>
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+  .split img{width:100%;border-radius:24px;object-fit:cover;}
+  .prose p{color:var(--ink-soft);font-size:16px;margin-bottom:14px;}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  @media(max-width:900px){.split,.grid3{grid-template-columns:1fr;}}
+</style>
