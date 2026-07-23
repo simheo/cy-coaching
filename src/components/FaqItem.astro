@@ -1,0 +1,16 @@
+---
+interface Props { q: string; a: string; }
+const { q, a } = Astro.props;
+---
+<details class="faq">
+  <summary>{q}<span class="chev">＋</span></summary>
+  <p>{a}</p>
+</details>
+<style>
+  .faq{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:4px 22px;margin-bottom:12px;}
+  summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0;font-weight:700;font-size:17px;}
+  summary::-webkit-details-marker{display:none;}
+  .chev{color:var(--terracotta);font-size:22px;transition:transform .2s;}
+  details[open] .chev{transform:rotate(45deg);}
+  .faq p{color:var(--ink-soft);padding:0 0 20px;font-size:15.5px;}
+</style>
