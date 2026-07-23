@@ -27,7 +27,7 @@ const { image, eyebrow, title, lede } = Astro.props;
   .hero h1{font-size:60px;color:var(--surface);margin-top:16px;}
   .lede{font-size:20px;margin:22px 0 32px;max-width:32ch;color:var(--cream);}
   .ctas{display:flex;gap:14px;flex-wrap:wrap;}
-  .hero :global(.btn--ghost){color:var(--surface);border-color:rgba(255,255,255,.7);}
+  .hero :global(.btn--ghost){color:var(--surface);border-color:color-mix(in srgb, var(--surface) 70%, transparent);}
   .trust{display:flex;gap:12px;margin-top:28px;color:var(--cream);font-size:14px;}
   .stars{color:#f0c04b;letter-spacing:2px;}
   @media(max-width:900px){.hero h1{font-size:40px;} .hero::after{background:linear-gradient(180deg,rgba(58,46,38,.4),rgba(58,46,38,.85));}}
