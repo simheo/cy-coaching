@@ -5,6 +5,7 @@ import Boxe from '../src/pages/boxe.astro';
 import Self from '../src/pages/self-defense.astro';
 import Muscu from '../src/pages/musculation.astro';
 import Ent from '../src/pages/coaching-entreprise.astro';
+import About from '../src/pages/a-propos.astro';
 
 test('homepage renders hero headline, 6 transformations and FAQ', async () => {
   const c = await AstroContainer.create();
@@ -40,4 +41,10 @@ test('entreprise page renders without images, shows benefits', async () => {
   expect(html).toContain("Investissez dans vos équipes");
   expect(html).toContain("Investissement au travail");
   expect(html).not.toContain('<img');
+});
+
+test('a-propos page shows STAPS credentials', async () => {
+  const c = await AstroContainer.create();
+  const html = await c.renderToString(About);
+  expect(html).toContain('deux Licences STAPS');
 });

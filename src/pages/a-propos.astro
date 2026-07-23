@@ -1,0 +1,132 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import SectionHead from '../components/SectionHead.astro';
+import CtaBand from '../components/CtaBand.astro';
+import aboutImg from '../assets/images/a-propos.jpg';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Yoann',
+  jobTitle: 'Coach sportif',
+  worksFor: { '@type': 'Organization', name: 'CY Coaching' },
+  areaServed: 'Toulouse',
+  url: 'https://www.cy-coaching.com/a-propos',
+};
+---
+
+<Base
+  title="Qui suis-je ? Yoann, coach sportif à Toulouse — CY Coaching"
+  description="Yoann, coach sportif à Toulouse, titulaire de deux Licences STAPS. Spécialiste en prise de masse, remise en forme, boxe pieds-poings et self-défense féminine."
+  jsonLd={jsonLd}
+>
+  <section class="section">
+    <div class="wrap split">
+      <Image
+        src={aboutImg}
+        alt="Yoann, coach sportif à Toulouse"
+        width={560}
+        height={620}
+      />
+      <div class="prose">
+        <SectionHead
+          eyebrow="Qui suis-je ?"
+          title="Yoann, votre coach à Toulouse"
+        />
+        <p>
+          Je suis titulaire de deux Licences STAPS — Entraînement Sportif et
+          Métiers de la Forme — obtenues à Toulouse. Ma formation académique,
+          complétée par de nombreuses expériences de terrain, m'a doté d'une
+          solide expertise en coaching sportif.
+        </p>
+        <p>
+          <strong
+            >J'ai toujours eu à cœur d'aider les autres à atteindre leurs
+            objectifs de bien-être ou de performance.</strong
+          >
+          C'est pour cela que j'ai choisi ce métier qui me passionne.
+        </p>
+        <h3>Mes spécialités</h3>
+        <ul>
+          <li>
+            <strong>Prise de masse musculaire</strong> — programmes
+            personnalisés pour stimuler l'hypertrophie en respectant votre
+            santé.
+          </li>
+          <li>
+            <strong>Remise en forme et tonification</strong> — des techniques
+            variées pour sculpter votre corps et améliorer votre condition
+            physique.
+          </li>
+          <li>
+            <strong>Boxe pieds-poings</strong> — fondamentaux et techniques
+            avancées, pour tous niveaux, dans une ambiance dynamique et
+            sécuritaire.
+          </li>
+          <li>
+            <strong>Self-défense féminine</strong> — apprendre à se défendre
+            tout en gagnant en confiance et en force.
+          </li>
+        </ul>
+        <p>
+          Au-delà de ces spécialités, je m'engage à créer un environnement
+          motivant et bienveillant, où le respect et l'écoute sont primordiaux.
+          Chaque séance est une occasion d'apprendre et de grandir ensemble.
+        </p>
+      </div>
+    </div>
+  </section>
+  <CtaBand
+    title="On travaille ensemble ?"
+    text="Discutons de vos objectifs lors d'une première séance offerte."
+  />
+</Base>
+
+<style>
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+
+  .split img {
+    width: 100%;
+    border-radius: 24px;
+    object-fit: cover;
+    position: sticky;
+    top: 100px;
+  }
+
+  .prose p {
+    color: var(--ink-soft);
+    font-size: 16px;
+    margin-bottom: 14px;
+  }
+
+  .prose h3 {
+    font-size: 24px;
+    margin: 22px 0 12px;
+  }
+
+  .prose ul {
+    padding-left: 20px;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+  }
+
+  .prose li {
+    margin-bottom: 10px;
+  }
+
+  @media (max-width: 900px) {
+    .split {
+      grid-template-columns: 1fr;
+    }
+
+    .split img {
+      position: static;
+    }
+  }
+</style>
