@@ -1,0 +1,47 @@
+---
+import { Icon } from 'astro-icon/components';
+interface Props { icon: string; title: string; text: string; }
+const { icon, title, text } = Astro.props;
+---
+<div class="card">
+  <div class="ic"><Icon name={icon} width={26} height={26} /></div>
+  <h3>{title}</h3>
+  <p>{text}</p>
+</div>
+<style>
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 30px 24px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    height: 100%;
+  }
+
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 36px rgba(58, 46, 38, 0.12);
+  }
+
+  .ic {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    background: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--terracotta);
+    margin-bottom: 18px;
+  }
+
+  h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 15px;
+    color: var(--ink-soft);
+  }
+</style>

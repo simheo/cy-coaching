@@ -1,0 +1,58 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+interface Props { image: ImageMetadata; title: string; text: string; href: string; }
+const { image, title, text, href } = Astro.props;
+---
+<a class="tile" href={href}>
+  <Image src={image} alt={title} width={480} height={560} />
+  <div class="cap"><h3>{title}</h3><p>{text}</p></div>
+</a>
+<style>
+  .tile {
+    position: relative;
+    display: block;
+    border-radius: 22px;
+    overflow: hidden;
+    height: 360px;
+    box-shadow: 0 12px 30px rgba(58, 46, 38, 0.14);
+    text-decoration: none;
+  }
+
+  .tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+  }
+
+  .tile:hover img {
+    transform: scale(1.06);
+  }
+
+  .tile::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(58, 46, 38, 0) 40%, rgba(58, 46, 38, 0.85) 100%);
+  }
+
+  .cap {
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    padding: 24px;
+    color: var(--surface);
+  }
+
+  .cap h3 {
+    color: var(--surface);
+    font-size: 24px;
+  }
+
+  .cap p {
+    font-size: 14px;
+    opacity: 0.9;
+    margin-top: 4px;
+  }
+</style>

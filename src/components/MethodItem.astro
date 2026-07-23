@@ -1,0 +1,36 @@
+---
+import { Icon } from 'astro-icon/components';
+interface Props { icon: string; title: string; text: string; }
+const { icon, title, text } = Astro.props;
+---
+<div class="mitem">
+  <div class="mic"><Icon name={icon} width={20} height={20} /></div>
+  <div><h3>{title}</h3><p>{text}</p></div>
+</div>
+<style>
+  .mitem {
+    display: flex;
+    gap: 16px;
+  }
+
+  .mic {
+    flex: 0 0 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--terracotta);
+    color: var(--surface);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  h3 {
+    font-size: 18px;
+    margin-bottom: 2px;
+  }
+
+  p {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+  }
+</style>
