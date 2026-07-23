@@ -11,6 +11,6 @@ test('there are 6 transformations, each fully described', () => {
   }
 });
 
-test('two entries carry an age/profile badge', () => {
+test('three entries carry an age/profile badge', () => {
   expect(transformations.filter((t) => t.badge).length).toBe(3);
 });

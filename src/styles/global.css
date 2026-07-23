@@ -1,7 +1,7 @@
 :root{
   --terracotta:#c76a43; --terracotta-dark:#a9552f; --clay:#e6b98f; --olive:#7a8a5f;
   --cream:#f6ede1; --cream-2:#efe0cf; --ink:#3a2e26; --ink-soft:#5c4d42; --bg:#fffdfa;
-  --border:#f0e6d8; --surface:#ffffff;
+  --border:#f0e6d8; --surface:#ffffff; --star:#e0a63c;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}

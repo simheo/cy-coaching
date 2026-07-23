@@ -11,6 +11,7 @@ import Footer from '../components/Footer.astro';
 interface Props { title: string; description: string; canonical?: string; jsonLd?: object; }
 const { title, description, canonical, jsonLd } = Astro.props;
 const canonicalURL = canonical ?? (Astro.site ? new URL(Astro.url.pathname, Astro.site).href : Astro.url.pathname);
+const ogImageURL = Astro.site ? new URL('/og-image.jpg', Astro.site).href : '/og-image.jpg';
 ---
 <!doctype html>
 <html lang="fr">
@@ -24,6 +25,12 @@ const canonicalURL = canonical ?? (Astro.site ? new URL(Astro.url.pathname, Astr
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
+  <meta property="og:image" content={ogImageURL} />
+  <meta property="og:url" content={canonicalURL} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImageURL} />
   {jsonLd && <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />}
   <!-- Google Analytics -->
   <script async is:inline src="https://www.googletagmanager.com/gtag/js?id=G-TTRMH9G96E"></script>

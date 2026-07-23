@@ -3,7 +3,7 @@ interface Props { q: string; a: string; }
 const { q, a } = Astro.props;
 ---
 <details class="faq">
-  <summary>{q}<span class="chev">＋</span></summary>
+  <summary>{q}<span class="chev" aria-hidden="true">＋</span></summary>
   <p>{a}</p>
 </details>
 <style>
