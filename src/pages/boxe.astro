@@ -1,0 +1,34 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Button from '../components/Button.astro';
+import CtaBand from '../components/CtaBand.astro';
+import boxeGroupe from '../assets/images/boxe-groupe.jpg';
+import boxeSolo from '../assets/images/boxe-solo.jpg';
+---
+<Base title="Cours de Boxe pieds-poings à Toulouse — CY Coaching"
+      description="Cours de boxe pieds-poings pour débutants à Toulouse avec CY Coaching. Défoulez-vous, évacuez le stress et travaillez votre cardio dans la bonne humeur.">
+  <section class="section">
+    <div class="wrap">
+      <SectionHead eyebrow="Boxe pieds-poings" title="Initiation à la boxe : maîtrisez les fondamentaux" />
+      <div class="split">
+        <Image src={boxeGroupe} alt="Cours d'initiation à la boxe en groupe à Toulouse" width={640} height={480} />
+        <div class="prose">
+          <p>Vous avez envie de découvrir une discipline qui vous permette de vous défouler, <strong>d'évacuer votre stress et de bosser votre cardio</strong> ?</p>
+          <p>Je propose des cours de boxe pour débutants, pour vous transmettre ma passion de ce sport et vous aider à évacuer les tracas du quotidien à travers une discipline incroyable.</p>
+          <Button href="/contact">Prêt(e) à mettre les gants ?</Button>
+        </div>
+      </div>
+      <Image class="wide" src={boxeSolo} alt="Cours d'initiation à la boxe en individuel à Toulouse" width={1120} height={620} />
+    </div>
+  </section>
+  <CtaBand title="Envie d'essayer ?" text="Première séance offerte : on met les gants et on voit si le courant passe." cta="Réserver ma séance" />
+</Base>
+<style>
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+  .split img{width:100%;border-radius:24px;object-fit:cover;}
+  .prose p{color:var(--ink-soft);font-size:16px;margin-bottom:14px;}
+  .wide{width:100%;border-radius:24px;margin-top:40px;object-fit:cover;}
+  @media(max-width:900px){.split{grid-template-columns:1fr;}}
+</style>
