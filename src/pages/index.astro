@@ -1,0 +1,119 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import SectionHead from '../components/SectionHead.astro';
+import DisciplineTile from '../components/DisciplineTile.astro';
+import AudienceCard from '../components/AudienceCard.astro';
+import MethodItem from '../components/MethodItem.astro';
+import TransformationCard from '../components/TransformationCard.astro';
+import Reviews from '../components/Reviews.astro';
+import FaqItem from '../components/FaqItem.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { transformations } from '../data/transformations';
+import { faq } from '../data/faq';
+
+import heroImg from '../assets/images/image_accueil.jpg';
+import muscuImg from '../assets/images/coaching-individuel.jpg';
+import boxeImg from '../assets/images/boxe-profil.jpg';
+import selfImg from '../assets/images/self-defense-coaching.jpg';
+import methodImg from '../assets/images/coaching-groupe.jpg';
+import aboutImg from '../assets/images/a-propos.jpg';
+
+const jsonLd = {
+  '@context': 'https://schema.org', '@type': 'LocalBusiness', name: 'CY Coaching',
+  description: 'Coach sportif à Toulouse : musculation, boxe pieds-poings et self-défense.',
+  areaServed: 'Toulouse', telephone: '+33608703251', url: 'https://www.cy-coaching.com',
+  sameAs: ['https://www.instagram.com/cy.coaching/'],
+  aggregateRating: { '@type': 'AggregateRating', ratingValue: '5', reviewCount: '15' },
+};
+---
+<Base title="Coach Sportif à Toulouse — CY Coaching"
+      description="CY Coaching, coach sportif à Toulouse : musculation, remise en forme, boxe pieds-poings et self-défense féminine. Progressez avec le sourire — première séance offerte."
+      jsonLd={jsonLd}>
+  <Hero image={heroImg} eyebrow="Coach sportif · Toulouse"
+        title="Progresser<br>avec le sourire"
+        lede="Musculation, boxe pieds-poings et self-défense — un accompagnement sur mesure, dans la bienveillance et la bonne humeur." />
+
+  <section class="section">
+    <div class="wrap">
+      <SectionHead eyebrow="Mes spécialités" title="Trois façons de se dépasser" lede="Chaque pratique, adaptée à votre niveau et à vos envies." />
+      <div class="disc-grid">
+        <DisciplineTile image={muscuImg} title="Musculation" text="Recomposition, remise en forme, prise de masse." href="/musculation" />
+        <DisciplineTile image={boxeImg} title="Boxe pieds-poings" text="Technique, cardio et défoulement dans la bonne humeur." href="/boxe" />
+        <DisciplineTile image={selfImg} title="Self-défense" text="Pour les femmes : confiance et réflexes." href="/self-defense" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="wrap">
+      <SectionHead eyebrow="Pour qui ?" title="À qui je m’adresse" lede="Quel que soit votre point de départ, on construit un chemin qui vous ressemble." />
+      <div class="grid4">
+        <AudienceCard icon="ph:buildings" title="Aux entreprises" text="Bien-être et cohésion des équipes, moins de stress et de maux liés aux postures." />
+        <AudienceCard icon="ph:heartbeat" title="Se remettre en forme" text="Se tonifier, retrouver de l’énergie et optimiser sa santé au quotidien." />
+        <AudienceCard icon="ph:boxing-glove" title="Aux aventureux" text="Découvrir une nouvelle pratique, notamment les sports de combat." />
+        <AudienceCard icon="ph:shield-check" title="Self-défense" text="Pour les femmes : gagner en confiance et savoir réagir face à une agression." />
+      </div>
+    </div>
+  </section>
+
+  <section class="section method" id="methode">
+    <div class="wrap split">
+      <Image src={methodImg} alt="Séance de coaching" width={640} height={480} />
+      <div>
+        <SectionHead eyebrow="Ma méthode" title="La clé de votre réussite" />
+        <div class="mlist">
+          <MethodItem icon="ph:flask" title="Basée sur la science" text="Une progression optimisée d’après les dernières études." />
+          <MethodItem icon="ph:barbell" title="+3000h de terrain" text="Expérience en musculation et en boxe." />
+          <MethodItem icon="ph:smiley" title="Bonne humeur" text="Se dépasser sans pression, avec plaisir." />
+          <MethodItem icon="ph:person-simple-run" title="Multisport" text="Une pratique variée pour coller à vos besoins." />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section about">
+    <div class="wrap split">
+      <div>
+        <SectionHead eyebrow="Qui suis-je ?" title="Bonjour, moi c’est Yoann" />
+        <p class="prose">Passionné de sport sous toutes ses formes, j’ai fait de la transmission mon métier. Mon truc : vous faire prendre du plaisir pendant l’effort, pour que la progression devienne une évidence.</p>
+        <p class="prose">Bienveillance, écoute et bonne humeur — c’est là-dessus que se construit chacune de nos séances.</p>
+        <a class="link" href="/a-propos">En savoir plus sur mon parcours →</a>
+      </div>
+      <Image src={aboutImg} alt="Yoann, coach sportif" width={560} height={520} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <SectionHead eyebrow="Transformations" title="De vrais résultats, de vraies personnes" lede="Quelques parcours accompagnés par Yoann — le fruit d’un travail régulier et d’un plaisir retrouvé à l’entraînement." />
+      <div class="grid3">{transformations.map((t) => <TransformationCard t={t} />)}</div>
+    </div>
+  </section>
+
+  <Reviews />
+
+  <section class="section faq">
+    <div class="wrap narrow">
+      <SectionHead eyebrow="Questions fréquentes" title="Tout ce que vous vous demandez" />
+      {faq.map((f) => <FaqItem q={f.q} a={f.a} />)}
+    </div>
+  </section>
+
+  <CtaBand title="Prêt à commencer ?" text="La première séance est offerte. On fait connaissance, on définit vos objectifs, et on se lance ensemble." />
+</Base>
+
+<style>
+  .disc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+  .split img{width:100%;border-radius:24px;object-fit:cover;box-shadow:0 16px 40px rgba(58,46,38,.16);}
+  .method{background:var(--cream);}
+  .mlist{margin-top:8px;display:flex;flex-direction:column;gap:20px;}
+  .prose{color:var(--ink-soft);font-size:16px;margin-bottom:14px;}
+  .link{color:var(--terracotta);font-weight:700;text-decoration:none;}
+  .narrow{max-width:760px;}
+  @media(max-width:900px){.disc-grid,.grid3,.split{grid-template-columns:1fr;} .grid4{grid-template-columns:1fr 1fr;}}
+</style>
