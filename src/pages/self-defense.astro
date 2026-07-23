@@ -1,0 +1,29 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Button from '../components/Button.astro';
+import CtaBand from '../components/CtaBand.astro';
+import selfImg from '../assets/images/self-defense-coaching.jpg';
+---
+<Base title="Self-défense féminine à Toulouse — CY Coaching"
+      description="Cours de self-défense féminine à Toulouse avec CY Coaching : prévention, protection et détermination. Gagnez en confiance et apprenez à réagir face à une agression.">
+  <section class="section">
+    <div class="wrap split">
+      <div class="prose">
+        <SectionHead eyebrow="Self-défense (femmes)" title="Autonomie et sécurité" />
+        <p>Vous souhaitez apprendre les rudiments d'une <strong>self-défense simple et efficace</strong> pour optimiser votre sécurité ?</p>
+        <p>Nous aborderons ensemble les notions de <strong>prévention, de protection et de détermination</strong>. Ces bases, complétées d'un panel technique développé durant les séances, seront éprouvées lors de mises en situation.</p>
+        <Button href="/contact">Réserver ma séance offerte</Button>
+      </div>
+      <Image src={selfImg} alt="Cours de self-défense féminine à Toulouse" width={560} height={620} />
+    </div>
+  </section>
+  <CtaBand title="Gagnez en confiance" text="Dès la première séance (offerte), on pose les bases pour vous sentir plus sûre de vous." cta="Je réserve" />
+</Base>
+<style>
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+  .split img{width:100%;border-radius:24px;object-fit:cover;}
+  .prose p{color:var(--ink-soft);font-size:16px;margin-bottom:14px;}
+  @media(max-width:900px){.split{grid-template-columns:1fr;}}
+</style>
