@@ -24,7 +24,7 @@ const placeId = import.meta.env.PUBLIC_GOOGLE_PLACE_ID;
       function render(reviews){
         var grid=document.getElementById('reviews-grid'); if(!grid||!reviews||!reviews.length) return;
         grid.innerHTML=reviews.slice(0,5).map(function(r){
-          var stars='★'.repeat(Math.min(5,Math.round(r.rating)));
+          var stars='★'.repeat(Math.min(5,Math.max(0,Math.round(r.rating))));
           return '<article class="rev"><div class="stars">'+stars+'</div><p>'+truncate(r.text||'',40)+'</p><div class="who">'+(r.author_name||'')+'</div></article>';
         }).join('');
       }
@@ -32,7 +32,9 @@ const placeId = import.meta.env.PUBLIC_GOOGLE_PLACE_ID;
         try{
           var svc=new google.maps.places.PlacesService(document.createElement('div'));
           svc.getDetails({placeId:placeId,fields:['reviews'],language:'fr'},function(place,status){
-            if(status===google.maps.places.PlacesServiceStatus.OK && place && place.reviews) render(place.reviews);
+            try{
+              if(status===google.maps.places.PlacesServiceStatus.OK && place && place.reviews) render(place.reviews);
+            }catch(e){/* keep fallback */}
           });
         }catch(e){/* keep fallback */}
       };

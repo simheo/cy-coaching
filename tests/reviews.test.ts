@@ -12,6 +12,7 @@ test('starArray rounds and caps at 5', () => {
   expect(starArray(4.6)).toHaveLength(5);
   expect(starArray(3.2)).toHaveLength(3);
   expect(starArray(9)).toHaveLength(5);
+  expect(starArray(0)).toHaveLength(0);
 });
 test('mapGoogleReview normalizes field names', () => {
   expect(mapGoogleReview({ author_name: 'Jean D.', rating: 5, text: 'Top' }))
