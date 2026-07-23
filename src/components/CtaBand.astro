@@ -1,0 +1,42 @@
+---
+import Button from './Button.astro';
+
+interface Props {
+  title: string;
+  text: string;
+  href?: string;
+  cta?: string;
+}
+
+const { title, text, href = '/contact', cta = 'Réserver ma séance offerte' } = Astro.props;
+---
+
+<section class="section" style="padding-top:0;">
+  <div class="wrap band">
+    <h2>{title}</h2>
+    <p>{text}</p>
+    <Button href={href} variant="light">{cta}</Button>
+  </div>
+</section>
+
+<style>
+  .band {
+    background: var(--terracotta);
+    color: var(--surface);
+    border-radius: 28px;
+    padding: 56px 24px;
+    text-align: center;
+  }
+
+  .band h2 {
+    color: var(--surface);
+    font-size: 38px;
+  }
+
+  .band p {
+    margin: 14px auto 26px;
+    max-width: 46ch;
+    opacity: 0.95;
+    font-size: 17px;
+  }
+</style>
