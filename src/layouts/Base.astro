@@ -24,9 +24,9 @@ const canonicalURL = canonical ?? (Astro.site ? new URL(Astro.url.pathname, Astr
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
-  {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+  {jsonLd && <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />}
   <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TTRMH9G96E"></script>
+  <script async is:inline src="https://www.googletagmanager.com/gtag/js?id=G-TTRMH9G96E"></script>
   <script is:inline>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
