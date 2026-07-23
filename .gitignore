@@ -9,9 +9,13 @@ dist/
 # Env & secrets
 .env
 .env.*
+!.env.example
 
 # OS
 .DS_Store
 
 # Source transformation photos (kept locally; cropped copies live in src/assets)
 Transformations Physiques 6png/
+
+# Legacy site (kept locally for reference; not part of the new build)
+cycoaching/
