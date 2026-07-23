@@ -1,0 +1,35 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionHead from '../components/SectionHead.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { pricing } from '../data/pricing';
+---
+<Base title="Tarifs du coaching sportif à Toulouse — CY Coaching"
+      description="Découvrez les tarifs CY Coaching à Toulouse : coaching individuel, mini-groupe et programmes à distance. Des formules adaptées à tous les objectifs et budgets.">
+  <section class="section">
+    <div class="wrap">
+      <SectionHead eyebrow="Tarifs" title="Des formules pour chaque objectif" lede="Coaching individuel, en petit groupe, ou programmes à distance — vous choisissez ce qui vous convient." />
+      <div class="cards">
+        {pricing.map((g) => (
+          <div class="pcard">
+            <h3>{g.title}</h3>
+            {g.note && <div class="note">{g.note}</div>}
+            <ul>{g.items.map((it) => <li><span>{it.label}</span><b>{it.price}</b></li>)}</ul>
+          </div>
+        ))}
+      </div>
+      <p class="foot-note">Les programmes à distance seront bientôt souscriptibles directement en ligne.</p>
+    </div>
+  </section>
+  <CtaBand title="Une question sur les tarifs ?" text="La première séance est offerte — parlons de la formule idéale pour vous." />
+</Base>
+<style>
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start;}
+  .pcard{background:var(--surface);border:1px solid var(--border);border-radius:22px;padding:30px 26px;box-shadow:0 8px 24px rgba(58,46,38,.08);}
+  .pcard h3{font-size:22px;} .note{color:var(--terracotta);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.08em;margin-top:4px;}
+  .pcard ul{list-style:none;margin-top:18px;}
+  .pcard li{display:flex;justify-content:space-between;gap:14px;padding:14px 0;border-top:1px solid var(--border);font-size:15px;}
+  .pcard li span{color:var(--ink-soft);} .pcard li b{white-space:nowrap;}
+  .foot-note{text-align:center;color:var(--ink-soft);font-style:italic;margin-top:28px;}
+  @media(max-width:900px){.cards{grid-template-columns:1fr;}}
+</style>
