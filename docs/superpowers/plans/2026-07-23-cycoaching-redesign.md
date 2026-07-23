@@ -11,7 +11,8 @@
 ## Global Constraints
 
 - **Language:** All user-facing copy in French. `<html lang="fr">`.
-- **Palette (CSS variables, exact values):** `--terracotta:#c76a43`; `--terracotta-dark:#a9552f`; `--clay:#e6b98f`; `--olive:#7a8a5f`; `--cream:#f6ede1`; `--cream-2:#efe0cf`; `--ink:#3a2e26`; `--ink-soft:#5c4d42`; `--bg:#fffdfa`.
+- **Palette (CSS variables, exact values):** `--terracotta:#c76a43`; `--terracotta-dark:#a9552f`; `--clay:#e6b98f`; `--olive:#7a8a5f`; `--cream:#f6ede1`; `--cream-2:#efe0cf`; `--ink:#3a2e26`; `--ink-soft:#5c4d42`; `--bg:#fffdfa`. **Neutrals (also tokens):** `--border:#f0e6d8` (hairline borders on cards/menus/footer separators); `--surface:#ffffff` (card/menu backgrounds).
+- **No raw color literals in component CSS.** Use the tokens above. For a card border use `1px solid var(--border)`; for a white surface use `var(--surface)`; for the translucent sticky-header background use `color-mix(in srgb, var(--bg) 92%, transparent)`. Do not introduce ad-hoc hex like `#fff`, `#f0e6d8`, `#efe3d5`. (Brief code samples written before this rule may still show raw hex — substitute the token.)
 - **Fonts:** Headings `Fraunces` (weights 500/600); body `Nunito Sans` (400/600/700/800). Self-hosted via fontsource — no CDN font links.
 - **Radii:** 16–24px on cards/tiles; 999px on buttons/chips.
 - **Existing URLs are preserved exactly:** `/`, `/boxe`, `/a-propos`, `/tarif`, `/contact`. New pages: `/musculation`, `/self-defense`, `/coaching-entreprise`.
@@ -220,6 +221,7 @@ git commit -m "chore: scaffold Astro project with Vitest container test harness"
 :root{
   --terracotta:#c76a43; --terracotta-dark:#a9552f; --clay:#e6b98f; --olive:#7a8a5f;
   --cream:#f6ede1; --cream-2:#efe0cf; --ink:#3a2e26; --ink-soft:#5c4d42; --bg:#fffdfa;
+  --border:#f0e6d8; --surface:#ffffff;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
