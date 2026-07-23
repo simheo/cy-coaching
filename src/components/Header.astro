@@ -12,9 +12,9 @@ const nav = [
 <header>
   <div class="wrap bar">
     <a href="/" class="logo">CY<span>·</span>Coaching</a>
-    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Menu" />
-    <label for="nav-toggle" class="burger"><span></span></label>
-    <nav class="menu">
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Ouvrir le menu" />
+    <label for="nav-toggle" class="burger" aria-hidden="true"><span></span></label>
+    <nav class="menu" aria-label="Navigation principale">
       <ul>
         {nav.map((n) => <li><a href={n.href}>{n.label}</a></li>)}
       </ul>
@@ -24,24 +24,25 @@ const nav = [
 </header>
 
 <style>
-  header{position:sticky;top:0;z-index:30;background:rgba(255,253,250,.92);backdrop-filter:blur(8px);border-bottom:1px solid #efe3d5;}
+  header{position:sticky;top:0;z-index:30;background:color-mix(in srgb, var(--bg) 92%, transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);}
   .bar{display:flex;align-items:center;justify-content:space-between;height:74px;gap:20px;}
   .logo{font-family:'Fraunces Variable',serif;font-weight:600;font-size:22px;text-decoration:none;}
   .logo span{color:var(--terracotta);}
   .menu ul{display:flex;gap:26px;list-style:none;}
   .menu a{text-decoration:none;color:var(--ink-soft);font-weight:600;font-size:15px;}
   .menu a:hover{color:var(--terracotta);}
-  .cta{display:inline-block;background:var(--terracotta);color:#fff;padding:11px 20px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;white-space:nowrap;}
+  .cta{display:inline-block;background:var(--terracotta);color:var(--surface);padding:11px 20px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;white-space:nowrap;}
   .cta:hover{background:var(--terracotta-dark);}
   .nav-toggle,.burger{display:none;}
   @media(max-width:960px){
-    .burger{display:block;cursor:pointer;width:26px;height:20px;position:relative;}
+    .burger{display:block;position:relative;width:26px;height:20px;}
     .burger span,.burger span::before,.burger span::after{content:'';position:absolute;left:0;width:100%;height:2px;background:var(--ink);border-radius:2px;transition:.2s;}
     .burger span{top:9px;} .burger span::before{top:-7px;} .burger span::after{top:7px;}
-    .menu{position:absolute;top:74px;left:0;right:0;background:var(--bg);border-bottom:1px solid #efe3d5;max-height:0;overflow:hidden;transition:max-height .25s;}
+    .nav-toggle{display:block;position:absolute;top:24px;right:22px;width:32px;height:26px;margin:0;opacity:0;z-index:40;cursor:pointer;}
+    .menu{position:absolute;top:74px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--border);max-height:0;overflow:hidden;visibility:hidden;transition:max-height .25s;}
     .menu ul{flex-direction:column;gap:0;padding:0 24px;}
-    .menu li{padding:14px 0;border-top:1px solid #f0e6d8;}
-    .nav-toggle:checked ~ .menu{max-height:60vh;}
+    .menu li{padding:14px 0;border-top:1px solid var(--border);}
+    .nav-toggle:checked ~ .menu{max-height:60vh;visibility:visible;}
     .cta{margin-left:auto;}
   }
 </style>
