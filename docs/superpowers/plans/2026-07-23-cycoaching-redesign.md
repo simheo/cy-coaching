@@ -115,7 +115,7 @@ cycoaching/
   "devDependencies": {
     "@astrojs/check": "^0.9.0",
     "typescript": "^5.6.0",
-    "vitest": "^2.1.0"
+    "vitest": "^3.0.0"
   }
 }
 ```
