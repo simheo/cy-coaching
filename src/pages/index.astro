@@ -38,7 +38,7 @@ const jsonLd = {
   <section class="section">
     <div class="wrap">
       <SectionHead eyebrow="Mes spécialités" title="Trois façons de se dépasser" lede="Chaque pratique, adaptée à votre niveau et à vos envies." />
-      <div class="disc-grid">
+      <div class="grid3">
         <DisciplineTile image={muscuImg} title="Musculation" text="Recomposition, remise en forme, prise de masse." href="/musculation" />
         <DisciplineTile image={boxeImg} title="Boxe pieds-poings" text="Technique, cardio et défoulement dans la bonne humeur." href="/boxe" />
         <DisciplineTile image={selfImg} title="Self-défense" text="Pour les femmes : confiance et réflexes." href="/self-defense" />
@@ -48,10 +48,10 @@ const jsonLd = {
 
   <section class="section" style="padding-top:0;">
     <div class="wrap">
-      <SectionHead eyebrow="Pour qui ?" title="À qui je m’adresse" lede="Quel que soit votre point de départ, on construit un chemin qui vous ressemble." />
+      <SectionHead eyebrow="Pour qui ?" title="À qui je m'adresse" lede="Quel que soit votre point de départ, on construit un chemin qui vous ressemble." />
       <div class="grid4">
         <AudienceCard icon="ph:buildings" title="Aux entreprises" text="Bien-être et cohésion des équipes, moins de stress et de maux liés aux postures." />
-        <AudienceCard icon="ph:heartbeat" title="Se remettre en forme" text="Se tonifier, retrouver de l’énergie et optimiser sa santé au quotidien." />
+        <AudienceCard icon="ph:heartbeat" title="Se remettre en forme" text="Se tonifier, retrouver de l'énergie et optimiser sa santé au quotidien." />
         <AudienceCard icon="ph:boxing-glove" title="Aux aventureux" text="Découvrir une nouvelle pratique, notamment les sports de combat." />
         <AudienceCard icon="ph:shield-check" title="Self-défense" text="Pour les femmes : gagner en confiance et savoir réagir face à une agression." />
       </div>
@@ -64,7 +64,7 @@ const jsonLd = {
       <div>
         <SectionHead eyebrow="Ma méthode" title="La clé de votre réussite" />
         <div class="mlist">
-          <MethodItem icon="ph:flask" title="Basée sur la science" text="Une progression optimisée d’après les dernières études." />
+          <MethodItem icon="ph:flask" title="Basée sur la science" text="Une progression optimisée d'après les dernières études." />
           <MethodItem icon="ph:barbell" title="+3000h de terrain" text="Expérience en musculation et en boxe." />
           <MethodItem icon="ph:smiley" title="Bonne humeur" text="Se dépasser sans pression, avec plaisir." />
           <MethodItem icon="ph:person-simple-run" title="Multisport" text="Une pratique variée pour coller à vos besoins." />
@@ -76,9 +76,9 @@ const jsonLd = {
   <section class="section about">
     <div class="wrap split">
       <div>
-        <SectionHead eyebrow="Qui suis-je ?" title="Bonjour, moi c’est Yoann" />
-        <p class="prose">Passionné de sport sous toutes ses formes, j’ai fait de la transmission mon métier. Mon truc : vous faire prendre du plaisir pendant l’effort, pour que la progression devienne une évidence.</p>
-        <p class="prose">Bienveillance, écoute et bonne humeur — c’est là-dessus que se construit chacune de nos séances.</p>
+        <SectionHead eyebrow="Qui suis-je ?" title="Bonjour, moi c'est Yoann" />
+        <p class="prose">Passionné de sport sous toutes ses formes, j'ai fait de la transmission mon métier. Mon truc : vous faire prendre du plaisir pendant l'effort, pour que la progression devienne une évidence.</p>
+        <p class="prose">Bienveillance, écoute et bonne humeur — c'est là-dessus que se construit chacune de nos séances.</p>
         <a class="link" href="/a-propos">En savoir plus sur mon parcours →</a>
       </div>
       <Image src={aboutImg} alt="Yoann, coach sportif" width={560} height={520} />
@@ -87,7 +87,7 @@ const jsonLd = {
 
   <section class="section">
     <div class="wrap">
-      <SectionHead eyebrow="Transformations" title="De vrais résultats, de vraies personnes" lede="Quelques parcours accompagnés par Yoann — le fruit d’un travail régulier et d’un plaisir retrouvé à l’entraînement." />
+      <SectionHead eyebrow="Transformations" title="De vrais résultats, de vraies personnes" lede="Quelques parcours accompagnés par Yoann — le fruit d'un travail régulier et d'un plaisir retrouvé à l'entraînement." />
       <div class="grid3">{transformations.map((t) => <TransformationCard t={t} />)}</div>
     </div>
   </section>
@@ -105,7 +105,6 @@ const jsonLd = {
 </Base>
 
 <style>
-  .disc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
   .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
   .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
   .split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
@@ -115,5 +114,5 @@ const jsonLd = {
   .prose{color:var(--ink-soft);font-size:16px;margin-bottom:14px;}
   .link{color:var(--terracotta);font-weight:700;text-decoration:none;}
   .narrow{max-width:760px;}
-  @media(max-width:900px){.disc-grid,.grid3,.split{grid-template-columns:1fr;} .grid4{grid-template-columns:1fr 1fr;}}
+  @media(max-width:900px){.grid3,.split{grid-template-columns:1fr;} .grid4{grid-template-columns:1fr 1fr;}}
 </style>
