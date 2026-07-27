@@ -1,0 +1,30 @@
+---
+// CY Coaching logo — the "Y" as a figure with arms raised (mark) + wordmark.
+// tone "ink" for light backgrounds (header), "cream" for dark backgrounds (footer).
+interface Props { tone?: 'ink' | 'cream'; class?: string; }
+const { tone = 'ink', class: className = '' } = Astro.props;
+---
+<span class:list={['logo', `tone-${tone}`, className]}>
+  <svg class="logo-mark" viewBox="0 0 120 140" aria-hidden="true" focusable="false">
+    <circle class="head" cx="60" cy="24" r="16" />
+    <path class="body" d="M32 42 L60 64 L88 42" />
+    <path class="body" d="M60 62 L60 98" />
+    <path class="legs" d="M42 126 L60 98 L78 126" />
+  </svg>
+  <span class="logo-word">CY&nbsp;Coaching</span>
+</span>
+
+<style>
+  .logo{display:inline-flex;align-items:center;gap:9px;line-height:1;}
+  .logo-mark{height:32px;width:auto;display:block;flex:0 0 auto;}
+  .logo-word{font-family:'Fraunces Variable',serif;font-weight:600;font-size:22px;letter-spacing:.004em;}
+
+  .logo-mark .head{fill:var(--c-body);}
+  .logo-mark .body{fill:none;stroke:var(--c-body);stroke-width:15;stroke-linecap:round;stroke-linejoin:round;}
+  .logo-mark .legs{fill:none;stroke:var(--c-legs);stroke-width:15;stroke-linecap:round;stroke-linejoin:round;}
+
+  .tone-ink{--c-body:var(--terracotta);--c-legs:var(--olive);}
+  .tone-ink .logo-word{color:var(--ink);}
+  .tone-cream{--c-body:var(--clay);--c-legs:var(--cream);}
+  .tone-cream .logo-word{color:var(--cream);}
+</style>

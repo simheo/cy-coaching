@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 140" role="img" aria-label="CY Coaching">
+  <circle cx="60" cy="24" r="16" fill="#c76a43"/>
+  <path d="M32 42 L60 64 L88 42" fill="none" stroke="#c76a43" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M60 62 L60 98" fill="none" stroke="#c76a43" stroke-width="15" stroke-linecap="round"/>
+  <path d="M42 126 L60 98 L78 126" fill="none" stroke="#7a8a5f" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

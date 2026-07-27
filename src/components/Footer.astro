@@ -1,4 +1,5 @@
 ---
+import Logo from './Logo.astro';
 const nav = [
   { href: '/', label: 'Accueil' }, { href: '/boxe', label: 'Boxe' },
   { href: '/a-propos', label: 'Qui suis-je ?' }, { href: '/tarif', label: 'Tarifs' },
@@ -8,7 +9,7 @@ const nav = [
 <footer>
   <div class="wrap grid">
     <div>
-      <div class="logo">CY<span>·</span>Coaching</div>
+      <Logo tone="cream" />
       <p class="tag">Coach sportif à domicile ou en salle à Toulouse et alentours.</p>
     </div>
     <nav><h4>Navigation</h4>{nav.map((n)=><a href={n.href}>{n.label}</a>)}</nav>
@@ -22,7 +23,6 @@ const nav = [
 <style>
   footer{background:var(--ink);color:var(--cream);padding:56px 0 30px;margin-top:80px;}
   .grid{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;}
-  .logo{font-family:'Fraunces Variable',serif;font-size:24px;color:var(--surface);} .logo span{color:var(--clay);}
   .tag{opacity:.7;margin-top:12px;font-size:14px;max-width:26ch;}
   h4{font-family:'Nunito Sans',sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:12px;margin-bottom:16px;opacity:.6;}
   footer a{display:block;color:var(--cream);text-decoration:none;margin-bottom:8px;font-size:15px;opacity:.85;}
