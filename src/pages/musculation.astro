@@ -25,7 +25,7 @@ const featured = transformations.slice(0, 3);
   <section class="section" style="background:var(--cream);">
     <div class="wrap">
       <SectionHead eyebrow="Transformations" title="Ce que donne un suivi régulier" />
-      <div class="grid3">{featured.map((t) => <TransformationCard t={t} />)}</div>
+      <div class="grid3 swipe">{featured.map((t) => <TransformationCard t={t} />)}</div>
     </div>
   </section>
   <CtaBand title="Votre transformation commence ici" text="Première séance offerte. On définit vos objectifs et on construit votre plan." />

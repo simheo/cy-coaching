@@ -16,3 +16,15 @@ a{color:inherit;}
 .section-head h2{font-size:40px;margin-top:10px;}
 .section-head p{color:var(--ink-soft);margin-top:14px;font-size:17px;}
 @media(max-width:900px){.section-head h2{font-size:30px;}}
+@media(max-width:900px){.section{padding:56px 0;}}
+
+/* Mobile: a card grid becomes a horizontal swipe row (CSS scroll-snap, no JS).
+   Cards are 85% wide so the next one peeks out; the row bleeds to the screen edges. */
+@media(max-width:900px){
+  /* !important: page-scoped grid rules (.grid3[data-astro-cid-…]) are more specific and would keep their columns */
+  .swipe{display:grid;grid-template-columns:none !important;grid-auto-flow:column;grid-auto-columns:85%;gap:16px;
+    overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding:0 24px;
+    margin:0 -24px;padding:8px 24px 24px;scrollbar-width:none;}
+  .swipe::-webkit-scrollbar{display:none;}
+  .swipe>*{scroll-snap-align:start;}
+}

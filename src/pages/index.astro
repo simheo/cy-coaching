@@ -88,7 +88,7 @@ const jsonLd = {
   <section class="section">
     <div class="wrap">
       <SectionHead eyebrow="Transformations" title="De vrais résultats, de vraies personnes" lede="Quelques parcours accompagnés par Yoann — le fruit d'un travail régulier et d'un plaisir retrouvé à l'entraînement." />
-      <div class="grid3">{transformations.map((t) => <TransformationCard t={t} />)}</div>
+      <div class="grid3 swipe">{transformations.map((t) => <TransformationCard t={t} />)}</div>
     </div>
   </section>
 
@@ -115,4 +115,5 @@ const jsonLd = {
   .link{color:var(--terracotta);font-weight:700;text-decoration:none;}
   .narrow{max-width:760px;}
   @media(max-width:900px){.grid3,.split{grid-template-columns:1fr;} .grid4{grid-template-columns:1fr 1fr;}}
+  @media(max-width:560px){.grid4{grid-template-columns:1fr;gap:14px;}}
 </style>

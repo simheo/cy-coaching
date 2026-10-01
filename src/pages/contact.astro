@@ -12,9 +12,9 @@ import contactImg from '../assets/images/contact.jpg';
       <div class="split">
         <Image src={contactImg} alt="Séance de coaching personnalisé à Toulouse" width={560} height={620} />
         <form action="https://formspree.io/f/mbjenzqk" method="POST">
-          <label>Ton nom<input type="text" name="nom" required /></label>
-          <label>Ton e-mail<input type="email" name="email" required /></label>
-          <label>Ton téléphone<input type="tel" name="telephone" required /></label>
+          <label>Ton nom<input type="text" name="nom" autocomplete="name" required /></label>
+          <label>Ton e-mail<input type="email" name="email" autocomplete="email" required /></label>
+          <label>Ton téléphone<input type="tel" name="telephone" autocomplete="tel" required /></label>
           <label>Message<textarea name="message" rows="5" required></textarea></label>
           <button type="submit">Envoyer</button>
         </form>
@@ -33,5 +33,5 @@ import contactImg from '../assets/images/contact.jpg';
   button{font:inherit;background:var(--terracotta);color:var(--surface);border:none;padding:14px;border-radius:999px;font-weight:700;font-size:15px;cursor:pointer;}
   button:hover{background:var(--terracotta-dark);}
   .direct{text-align:center;margin-top:28px;color:var(--ink-soft);}
-  @media(max-width:900px){.split{grid-template-columns:1fr;}}
+  @media(max-width:900px){.split{grid-template-columns:1fr;} .split img{display:none;}}
 </style>

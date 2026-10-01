@@ -44,4 +44,30 @@ const { icon, title, text } = Astro.props;
     font-size: 15px;
     color: var(--ink-soft);
   }
+
+  @media (max-width: 560px) {
+    .card {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      column-gap: 14px;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .ic {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      margin-bottom: 0;
+    }
+
+    h3 {
+      margin-bottom: 0;
+    }
+
+    p {
+      grid-column: 1 / -1;
+      margin-top: 10px;
+    }
+  }
 </style>

@@ -10,7 +10,7 @@ const placeId = import.meta.env.PUBLIC_GOOGLE_PLACE_ID;
       <div class="eyebrow">Ils m'ont fait confiance</div>
       <h2>Des sourires, des résultats</h2>
     </div>
-    <div class="rev-grid" id="reviews-grid">
+    <div class="rev-grid swipe" id="reviews-grid">
       {fallbackReviews.map((r) => <ReviewCard author={r.author} rating={r.rating} text={r.text} />)}
     </div>
   </div>
@@ -55,7 +55,6 @@ const placeId = import.meta.env.PUBLIC_GOOGLE_PLACE_ID;
 <style>
   .reviews{background:var(--cream);}
   .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
-  @media(max-width:900px){.rev-grid{grid-template-columns:1fr;}}
   /* card styles duplicated for injected markup */
   .rev-grid :global(.rev){background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:26px;}
   .rev-grid :global(.stars){color:var(--star);letter-spacing:2px;margin-bottom:12px;}
