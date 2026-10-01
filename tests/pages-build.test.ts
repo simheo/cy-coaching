@@ -65,3 +65,11 @@ test('contact page posts to the Formspree endpoint with all fields', async () =>
   expect(html).toContain('https://formspree.io/f/mbjenzqk');
   for (const n of ['nom','email','telephone','message']) expect(html).toContain(`name="${n}"`);
 });
+
+test('homepage hero image is the LCP: loaded eagerly with high priority', async () => {
+  const c = await AstroContainer.create();
+  const html = await c.renderToString(Index);
+  const hero = html.match(/<img[^>]*hero-bg[^>]*>/)?.[0] ?? '';
+  expect(hero).toContain('loading="eager"');
+  expect(hero).toContain('fetchpriority="high"');
+});

@@ -6,7 +6,7 @@ interface Props { image: ImageMetadata; eyebrow: string; title: string; lede: st
 const { image, eyebrow, title, lede } = Astro.props;
 ---
 <section class="hero">
-  <Image class="hero-bg" src={image} alt="" width={1600} height={1000} />
+  <Image class="hero-bg" src={image} alt="" width={1600} height={1000} loading="eager" fetchpriority="high" />
   <div class="wrap inner">
     <div class="eyebrow light">{eyebrow}</div>
     <h1 set:html={title} />

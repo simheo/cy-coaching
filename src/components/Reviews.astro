@@ -23,10 +23,17 @@ const placeId = import.meta.env.PUBLIC_GOOGLE_PLACE_ID;
       function truncate(t, m){var w=t.trim().split(/\s+/);return w.length<=m?w.join(' '):w.slice(0,m).join(' ')+'…';}
       function render(reviews){
         var grid=document.getElementById('reviews-grid'); if(!grid||!reviews||!reviews.length) return;
-        grid.innerHTML=reviews.slice(0,5).map(function(r){
-          var stars='★'.repeat(Math.min(5,Math.max(0,Math.round(r.rating))));
-          return '<article class="rev"><div class="stars">'+stars+'</div><p>'+truncate(r.text||'',40)+'</p><div class="who">'+(r.author_name||'')+'</div></article>';
-        }).join('');
+        // Review text/author are user-written: build nodes with textContent, never innerHTML.
+        function el(tag,cls,text){var e=document.createElement(tag);e.className=cls;e.textContent=text;return e;}
+        grid.replaceChildren.apply(grid, reviews.slice(0,5).map(function(r){
+          var card=el('article','rev','');
+          card.append(
+            el('div','stars','★'.repeat(Math.min(5,Math.max(0,Math.round(r.rating))))),
+            el('p','',truncate(r.text||'',40)),
+            el('div','who',r.author_name||'')
+          );
+          return card;
+        }));
       }
       window.__initReviews=function(){
         try{

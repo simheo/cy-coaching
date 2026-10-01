@@ -1,9 +1,10 @@
 ---
 import Logo from './Logo.astro';
 const nav = [
-  { href: '/', label: 'Accueil' }, { href: '/boxe', label: 'Boxe' },
-  { href: '/a-propos', label: 'Qui suis-je ?' }, { href: '/tarif', label: 'Tarifs' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/', label: 'Accueil' }, { href: '/musculation', label: 'Musculation' },
+  { href: '/boxe', label: 'Boxe' }, { href: '/self-defense', label: 'Self-défense' },
+  { href: '/coaching-entreprise', label: 'Entreprises' }, { href: '/a-propos', label: 'Qui suis-je ?' },
+  { href: '/tarif', label: 'Tarifs' }, { href: '/contact', label: 'Contact' },
 ];
 ---
 <footer>
@@ -27,4 +28,5 @@ const nav = [
   h4{font-family:'Nunito Sans',sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:12px;margin-bottom:16px;opacity:.6;}
   footer a{display:block;color:var(--cream);text-decoration:none;margin-bottom:8px;font-size:15px;opacity:.85;}
   footer a:hover{opacity:1;}
+  @media(max-width:900px){footer{margin-top:24px;}}
 </style>
