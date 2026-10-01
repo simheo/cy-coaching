@@ -45,6 +45,16 @@ test('entreprise page renders without images, shows benefits', async () => {
   expect(html).not.toContain('<img');
 });
 
+test('entreprise page leads with health and stresses TMS prevention', async () => {
+  const c = await AstroContainer.create();
+  const html = await c.renderToString(Ent);
+  // Health benefit comes before the other two
+  expect(html.indexOf('Santé &amp; bien-être')).toBeGreaterThan(-1);
+  expect(html.indexOf('Santé &amp; bien-être')).toBeLessThan(html.indexOf('Cohésion d'));
+  expect(html).toContain('troubles musculo-squelettiques');
+  expect(html).toContain('Prévention des TMS');
+});
+
 test('a-propos page shows STAPS credentials', async () => {
   const c = await AstroContainer.create();
   const html = await c.renderToString(About);
